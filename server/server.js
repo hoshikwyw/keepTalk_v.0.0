@@ -1,13 +1,13 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
-const videoRoutes = require('./routes/videoRoutes');
+import express, { json } from 'express';
+import { createServer } from 'http';
+import socketIo from 'socket.io';
+import cors from 'cors';
+import connectDB from './config/db';
+import authRoutes from './routes/authRoutes';
+import videoRoutes from './routes/videoRoutes';
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: '*',
@@ -17,7 +17,7 @@ const io = socketIo(server, {
 connectDB();
 
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
 app.use('/api', authRoutes);
 app.use('/api', videoRoutes);
