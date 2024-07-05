@@ -8,7 +8,7 @@ import VideoCall from './pages/VideoCall'
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Register />} />
+      <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/chat' element={<Chat />} />
       <Route path='/video-call' element={<VideoCall />} />
